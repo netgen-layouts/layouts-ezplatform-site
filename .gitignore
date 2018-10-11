@@ -56,7 +56,6 @@ web/fonts/
 /web/.htaccess
 
 composer.phar
-composer.lock
 .buildpath
 .project
 .settings/
@@ -64,3 +63,4 @@ behat.yml
 .php_cs.cache
 auth.json
 ide-twig.json
+.idea
