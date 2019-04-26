@@ -58,8 +58,8 @@
         "leafo/scssphp": "^0.7.6",
         "symfony/thanks": "^1.0.7",
 
-        "netgen/layouts-standard": "~0.12.0",
-        "netgen/layouts-ezplatform": "~0.12.0"
+        "netgen/layouts-standard": "~0.13.0",
+        "netgen/layouts-ezplatform": "~0.13.0"
     },
     "require-dev": {
         "behat/behat": "^3.4.3",
