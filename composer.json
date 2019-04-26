@@ -118,7 +118,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "0.12.x-dev"
+            "dev-master": "0.13.x-dev"
         }
     }
 }
