@@ -57,11 +57,11 @@ class AppKernel extends Kernel
             new Netgen\Bundle\ContentBrowserBundle\NetgenContentBrowserBundle(),
             new Netgen\Bundle\ContentBrowserEzPlatformBundle\NetgenContentBrowserEzPlatformBundle(),
             new Netgen\Bundle\ContentBrowserUIBundle\NetgenContentBrowserUIBundle(),
-            new Netgen\Bundle\BlockManagerBundle\NetgenBlockManagerBundle(),
-            new Netgen\Bundle\BlockManagerStandardBundle\NetgenBlockManagerStandardBundle(),
-            new Netgen\Bundle\BlockManagerUIBundle\NetgenBlockManagerUIBundle(),
-            new Netgen\Bundle\BlockManagerAdminBundle\NetgenBlockManagerAdminBundle(),
-            new Netgen\Bundle\EzPublishBlockManagerBundle\NetgenEzPublishBlockManagerBundle(),
+            new Netgen\Bundle\LayoutsBundle\NetgenLayoutsBundle(),
+            new Netgen\Bundle\LayoutsStandardBundle\NetgenLayoutsStandardBundle(),
+            new Netgen\Bundle\LayoutsUIBundle\NetgenLayoutsUIBundle(),
+            new Netgen\Bundle\LayoutsAdminBundle\NetgenLayoutsAdminBundle(),
+            new Netgen\Bundle\LayoutsEzPlatformBundle\NetgenLayoutsEzPlatformBundle(),
             // Application
             new AppBundle\AppBundle(),
         ];
@@ -80,7 +80,7 @@ class AppKernel extends Kernel
                 $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
                 $bundles[] = new Overblog\GraphiQLBundle\OverblogGraphiQLBundle();
-                $bundles[] = new Netgen\Bundle\BlockManagerDebugBundle\NetgenBlockManagerDebugBundle();
+                $bundles[] = new Netgen\Bundle\LayoutsDebugBundle\NetgenLayoutsDebugBundle();
         }
 
         return $bundles;
