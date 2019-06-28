@@ -135,6 +135,8 @@ fos_http_cache:
             # Should not be set to high, as cached 404's can cause issues for future routes, url aliases, wildcards, ..
             -
                 match:
+                    attributes:
+                        _route: "^(?!nglayouts_app_api_|ngcb_api_)"
                     match_response: "!response.isFresh() && response.isNotFound()"
                 headers:
                     overwrite: true
