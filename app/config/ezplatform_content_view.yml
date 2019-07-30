@@ -1,0 +1,14 @@
+ezpublish:
+    system:
+        site_group:
+            pagelayout: "@ezdesign/pagelayout.html.twig"
+            content_view:
+                full:
+                    full:
+                        template: "@ezdesign/content/full.html.twig"
+                        match: ~
+                standard:
+                    folder:
+                        template: "@ezdesign/content/standard/folder.html.twig"
+                        match:
+                            Identifier\ContentType: folder

@@ -1,3 +1,6 @@
+imports:
+    - { resource: ezplatform_content_view.yml }
+
 ezpublish:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
     http_cache:
