@@ -92,18 +92,6 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
-# Assetic Configuration
-assetic:
-    debug: '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    bundles: [ EzPlatformAdminUiBundle ]
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
-        scssphp:
-            formatter: 'ScssPhp\ScssPhp\Formatter\Crunched'
-            import_paths: ['%kernel.project_dir%/web/']
-
 # Webpack Encore Configuration
 webpack_encore:
     output_path: "%kernel.project_dir%/web/assets/build"
