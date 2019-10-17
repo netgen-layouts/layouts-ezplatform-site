@@ -66,8 +66,8 @@
         "white-october/pagerfanta-bundle": "^1.2.2",
         "willdurand/js-translation-bundle": "^2.6.6",
 
-        "netgen/layouts-standard": "~1.0.0",
-        "netgen/layouts-ezplatform": "~1.0.0"
+        "netgen/layouts-standard": "~1.1.0",
+        "netgen/layouts-ezplatform": "~1.1.0"
     },
     "require-dev": {
         "behat/behat": "^3.5.0",
@@ -86,6 +86,8 @@
 
         "franzl/studio": "*"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "conflict": {
         "symfony/symfony": "3.4.9||3.4.12||3.4.16",
         "doctrine/dbal": "2.7.0",
@@ -132,7 +134,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.1.x-dev"
         }
     }
 }
