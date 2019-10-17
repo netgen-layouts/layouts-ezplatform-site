@@ -63,9 +63,9 @@ overblog_graphql_endpoint:
         _format: json
 
 netgen_layouts:
-    resource: "@NetgenLayoutsBundle/Resources/config/routing.yml"
+    resource: "@NetgenLayoutsBundle/Resources/config/routing.yaml"
     prefix: "%netgen_layouts.route_prefix%"
 
 netgen_content_browser:
-    resource: "@NetgenContentBrowserBundle/Resources/config/routing.yml"
+    resource: "@NetgenContentBrowserBundle/Resources/config/routing.yaml"
     prefix: "%netgen_content_browser.route_prefix%"
