@@ -86,8 +86,6 @@
         "sensio/generator-bundle": "^3.1.7",
         "symfony/phpunit-bridge": "^3.4.18"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "conflict": {
         "symfony/symfony": "3.4.9||3.4.12||3.4.16",
         "doctrine/dbal": "2.7.0",
