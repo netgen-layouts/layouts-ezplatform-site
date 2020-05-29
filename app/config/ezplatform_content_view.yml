@@ -12,3 +12,7 @@ ezpublish:
                         template: "@ezdesign/content/standard/folder.html.twig"
                         match:
                             Identifier\ContentType: folder
+                    article:
+                        template: "@ezdesign/content/standard/article.html.twig"
+                        match:
+                            Identifier\ContentType: article
