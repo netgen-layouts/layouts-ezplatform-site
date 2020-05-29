@@ -10,6 +10,9 @@
     {% if content is defined and content.contentInfo.mainLocationId %}
         <link rel="canonical" href="{{ path( 'ez_urlalias', {'locationId': content.contentInfo.mainLocationId} ) }}" />
     {% endif %}
+
+    {% include '@NetgenLayouts/page_head.html.twig' with { full: true } %}
+    {% include '@NetgenLayoutsStandard/page_head.html.twig' with { full: true } %}
 </head>
 <body>
 {% block layout %}
