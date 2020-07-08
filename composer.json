@@ -6,14 +6,16 @@
     "type": "project",
     "authors": [
         {
-            "name": "eZ dev-team & eZ Community",
-            "homepage": "https://github.com/ezsystems/ezplatform/contributors"
-        },
-        {
             "name": "Netgen",
             "homepage": "https://netgen.io"
+        },
+        {
+            "name": "eZ dev team & eZ Community",
+            "homepage": "https://github.com/ezsystems/ezplatform/contributors"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "ext-ctype": "*",
@@ -70,8 +72,8 @@
         "symfony/yaml": "^5.0",
         "twig/extra-bundle": "^3.0",
 
-        "netgen/layouts-standard": "~1.1.0",
-        "netgen/layouts-ezplatform": "~1.1.0"
+        "netgen/layouts-standard": "~1.2.0",
+        "netgen/layouts-ezplatform": "~1.2.0"
     },
     "require-dev": {
         "behat/behat": "^3.6",
