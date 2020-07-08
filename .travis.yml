@@ -9,8 +9,9 @@ services:
 env:
   global:
     - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
-    - SYMFONY_ENV=behat
-    - SYMFONY_DEBUG=1
+    - APP_ENV=behat
+    - APP_DEBUG=1
+    - COMPOSER_MEMORY_LIMIT=4G
 
 cache:
   yarn: true
@@ -28,28 +29,22 @@ branches:
 # list of behat arguments to test
 matrix:
   include:
-    # TMP disable usage of varnish until we figure out segmentation faulty issue on 2.0
-    #- TEST_CMD="--mode=behat --profile=rest --suite=fullJson --tags=~@broken" COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/selenium.yml" WEB_HOST="varnish"
-    - name: "PHP Unit tests"
+    - name: "eZ Platform REST Bundle functional tests"
       env:
-        - TEST_CMD="php bin/phpunit -v vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/Tests/Functional"
+        - TEST_CMD="./bin/.travis/run_rest_tests.sh"
         - SYMFONY_CMD="ez:behat:create-language 'pol-PL' 'Polish (polski)'"
-    - name: "Kernel Rest fullJson tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullJson --tags=~@broken --non-strict"
-    - name: "Kernel Rest fullXML tests"
-      env: BEHAT_OPTS="--mode=behat --profile=rest --suite=fullXml --tags=~@broken --non-strict"
-    - name: "Kernel Rest core tests"
+    - name: "Kernel core tests"
       env: BEHAT_OPTS="--mode=behat --profile=core --tags=~@broken"
     - name: "Behat"
       env: BEHAT_OPTS="--mode=behat --profile=behat --tags=~@broken"
-    - name: "Repository Forms tests on Clean Platform"
-      env: BEHAT_OPTS="--mode=behat --profile=repository-forms --tags=~@broken --non-strict"
+    - name: "Content Forms tests on Clean Platform"
+      env: BEHAT_OPTS="--mode=behat --profile=content-forms --tags=~@broken --non-strict"
     - name: "Admin UI on Clean Platform"
-      env: BEHAT_OPTS="--profile=adminui --suite=adminui"
+      env: BEHAT_OPTS="--profile=adminui --suite=adminui --tags=~@broken"
     - name: "Admin UI on Clean Platform with Varnish and Redis"
       env:
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/varnish.yml:doc/docker/redis.yml:doc/docker/selenium.yml"
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
+        - BEHAT_OPTS="--profile=adminui --suite=adminui --tags=~@broken"
         - WEB_HOST="varnish"
     # Nightly and triggered jobs for Clean OSS
     - if: type in (cron, api)
@@ -58,10 +53,10 @@ matrix:
         - SETUP_BEHAT_OPTS="--profile=setup --suite=personas --tags=@setup"
         - BEHAT_OPTS="--profile=adminui --suite=personas"
     - if: type in (cron, api)
-      name: "[PHP 7.1] Admin UI on Clean Platform"
+      name: "[PHP 7.3] Admin UI on Clean Platform"
       env:
-        - BEHAT_OPTS="--profile=adminui --suite=adminui"
-        - PHP_IMAGE=ezsystems/php:7.1-v1
+        - BEHAT_OPTS="--profile=adminui --suite=adminui --tags=~@broken"
+        - PHP_IMAGE=ezsystems/php:7.3-v1
 
 # reduce depth (history) of git checkout
 git:
@@ -101,7 +96,7 @@ before_script:
 # Execute test command, need to use sh to get right exit code (docker/compose/issues/3379)
 # Behat will use behat.yml which is a copy of behat.yml.dist with hostnames update by doc/docker/selenium.yml
 script:
-  - if [ "${TEST_CMD}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "$TEST_CMD" ; fi
+  - if [ "${TEST_CMD}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec app sh -c "$TEST_CMD" ; fi
   - if [ "${BEHAT_OPTS}" != "" ] ; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat $BEHAT_OPTS" ; fi
 
 

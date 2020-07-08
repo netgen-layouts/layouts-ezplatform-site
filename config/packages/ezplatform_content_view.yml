@@ -1,0 +1,14 @@
+ezplatform:
+    system:
+        site_group:
+            pagelayout: "@ezdesign/pagelayout.html.twig"
+            content_view:
+                standard:
+                    folder:
+                        template: "@ezdesign/standard/folder.html.twig"
+                        match:
+                            Identifier\ContentType: folder
+                    article:
+                        template: "@ezdesign/standard/article.html.twig"
+                        match:
+                            Identifier\ContentType: article

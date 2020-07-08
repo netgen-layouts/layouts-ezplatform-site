@@ -34,15 +34,15 @@ This requires more manual steps, but may be more up to date with current develop
    `export COMPOSER_AUTH='{"http-basic":{"updates.ez.no":{"username":"network-id","password":"token-key"}}}'`
 
    Further reading also on [docs.platform.sh](https://docs.platform.sh/tutorials/composer-auth.html#set-the-envcomposerauth-project-variable)
-6. [Optional] Set the `env:symfony_env` or `env:COMPOSER_AUTH` project variables by performing the following steps:
+6. [Optional] Set the `env:app_env` or `env:COMPOSER_AUTH` project variables by performing the following steps:
    1. Install the Platform.sh CLI according to https://docs.platform.sh/gettingstarted/own-code/cli-install.html
    2. Run `platform`
       Run `platform get <your project id>`
    3. Authentication against Github/Bitbucket/Gitlab/updates.ez.no
        For example set the project variables for your eZ Network installation ID and token:
       `platform project:variable:create env:COMPOSER_AUTH '{"http-basic":{"updates.ez.no":{"username":"network-id","password":"token-key"}}}' --no-visible-runtime --sensitive true`
-   4. If you have the need to debug things remotely, set the `SYMFONY_ENV` environment variable to 'dev':
-      `platform project:variable:set env:SYMONY_ENV dev`.
+   4. If you have the need to debug things remotely, set the `APP_ENV` environment variable to 'dev':
+      `platform project:variable:set env:APP_ENV dev`.
 7. Push your branch. The Platform.sh setup wizard provides the command to use. Example:
    `git push -u platform master`  
    This starts the build process. Now, finish the Platform.sh setup wizard.

@@ -4,34 +4,40 @@ default:
     formatters:
         pretty: true
         allure:
-          output_path: %paths.base%/build/allure
+          output_path: '%paths.base%/build/allure'
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost'
             goutte: ~
-            javascript_session: selenium2
-            selenium2:
-                browser: chrome
-                wd_host: 'http://localhost:4444/wd/hub'
-                capabilities:
-                    extra_capabilities:
-                        chromeOptions:
-                            w3c: false
-                            args:
-                                - "--window-size=1440,1080"
-                                - "--no-sandbox"
-                                # problem with different iframe host  - https://bugs.chromium.org/p/chromedriver/issues/detail?id=2758
-                                - "--disable-features=site-per-process"
+            javascript_session: selenium
+            sessions:
+                selenium:
+                    selenium2:
+                        browser: chrome
+                        wd_host: 'http://localhost:4444/wd/hub'
+                        capabilities:
+                            extra_capabilities:
+                                chromeOptions:
+                                    w3c: false
+                                    args:
+                                        - "--window-size=1440,1080"
+                                        - "--no-sandbox"
+                                        # problem with different iframe host  - https://bugs.chromium.org/p/chromedriver/issues/detail?id=2758
+                                        - "--disable-features=site-per-process"
+                chrome:
+                    chrome:
+                        api_url: "http://localhost:9222"
 
-        Behat\Symfony2Extension:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+
+        FriendsOfBehat\SymfonyExtension\ServiceContainer\SymfonyExtension:
             kernel:
-                bootstrap: vendor/autoload.php
-                path: app/AppKernel.php
-                class: AppKernel
-                env: behat
+                path: src/Kernel.php
+                class: App\Kernel
+                environment: behat
                 debug: true
 
-        EzSystems\PlatformBehatBundle\ServiceContainer\EzBehatExtension: ~
+        EzSystems\BehatBundle\BehatExtension: ~
 
         Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
@@ -51,8 +57,8 @@ default:
     suites: ~
 
 imports:
-    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml
-    - vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishRestBundle/behat_suites.yml
-    - vendor/ezsystems/repository-forms/behat_suites.yml
+    - vendor/ezsystems/ezplatform-kernel/eZ/Bundle/EzPublishCoreBundle/behat_suites.yml
+    - vendor/ezsystems/ezplatform-content-forms/behat_suites.yml
     - vendor/ezsystems/ezplatform-admin-ui/behat_suites.yml
-    - vendor/ezsystems/behatbundle/EzSystems/BehatBundle/behat_suites.yml
+    - vendor/ezsystems/behatbundle/behat_suites.yml
+    - vendor/ezsystems/ezplatform-http-cache/behat_suites.yml

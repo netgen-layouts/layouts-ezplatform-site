@@ -42,8 +42,8 @@ It includes instructions on installing other distributions _(like [ezplatform-ee
 
 These instructions assume you have already installed:
 
-- PHP _(7.1 or higher)_
-- Web Server _(Recommeneded: Apache / Nginx. Use of PHP's built-in development server is also possible)_
+- PHP _(7.3 or higher)_
+- Web Server _(Recommended: Apache / Nginx. Use of PHP's built-in development server is also possible)_
 - Database server _(MySQL 5.5+ or MariaDB 10.0+)_
 - [Composer](https://doc.ezplatform.com/en/latest/getting_started/about_composer/)
 - Git _(for development)_

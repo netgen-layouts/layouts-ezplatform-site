@@ -6,17 +6,19 @@ const eZConfig = getEzConfig(Encore);
 const customConfigs = require('./ez.webpack.custom.configs.js');
 
 Encore.reset();
-Encore.setOutputPath('web/assets/build')
+Encore.setOutputPath('public/assets/build')
     .setPublicPath('/assets/build')
     .enableSassLoader()
     .enableReactPreset()
     .enableSingleRuntimeChunk();
 
 // Put your config here.
+Encore.addEntry('app_default', [
+    path.resolve(__dirname, './assets/scss/welcome-page.scss'),
+]);
 
-// uncomment the two lines below, if you added a new entry (by Encore.addEntry() or Encore.addStyleEntry() method) to your own Encore configuration for your project
-// const projectConfig = Encore.getWebpackConfig();
-// module.exports = [ eZConfig, ...customConfigs, projectConfig ];
+const projectConfig = Encore.getWebpackConfig();
+module.exports = [ eZConfig, ...customConfigs, projectConfig ];
 
-// comment-out this line if you've uncommented the above lines
-module.exports = [ eZConfig, ...customConfigs ];
+// uncomment this line if you've commented-out the above lines
+// module.exports = [ eZConfig, ...customConfigs ];
